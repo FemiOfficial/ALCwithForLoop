@@ -1,0 +1,339 @@
+.navbar {
+    box-shadow: 0px 2px #888888;
+}
+
+.confirm-breadcrumbs {
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid #888888;
+    box-shadow: 2px 2px #ebdbdb;
+    justify-content: center;
+    background: #fff;
+}
+
+.confirm-breadcrumbs .confirm {
+   padding: 20px;
+}
+
+.confirm-breadcrumbs .checkout {
+    padding: 20px;
+}
+
+.confirm h1{
+    margin: 0;
+    color: #ff654d; 
+}
+
+.checkout h1 {
+    color: #e7c0ba;
+    margin: 0;
+}
+
+
+
+.container-checkout {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 50px;
+    overflow-x:auto;
+}
+
+.order-details {
+    flex-grow: 4;
+
+}
+
+.order-summary {
+    flex-grow: 5;
+    padding: 0px 20px;
+
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+  
+  th {
+      color: #c5c5c1;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even){
+      background-color: #f2f2f2;
+
+}
+
+
+.meal-container, .order-total, .checkout-total {
+    display: -webkit-flex;
+    display:    -moz-flex;
+    display:     -ms-flex;
+    display:         flex;
+    -webkit-flex-direction: row;
+       -moz-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row; 
+}
+
+.order-summary h3 {
+    margin: 0;
+}
+
+.order-summary h4 {
+    color: #c5c5c1;
+    justify-content: center;
+    text-align: center;
+}
+.order-summary h4 a {
+    text-decoration: none;
+}
+
+.order-summary h4 a:hover {
+    color: #c5c5c1;
+}
+
+.meal-container {
+    padding: 15px;
+}
+
+.order-total {
+    margin: 20px 0;
+    padding: 20px 0;
+    border-top: 2px solid #ff654d ;
+}
+.checkout-total {
+    margin: 0px 0;
+    padding: 10px 20px;
+}
+
+.order-total .first, .checkout-total .first {
+    -webkit-flex: 3;
+    -moz-flex: 3;
+     -ms-flex: 3;
+         flex: 3; 
+         margin-top: 0;
+         padding: 0;
+         font-weight: 700;
+}
+
+
+
+.meal-container .meal-img {
+    -webkit-flex: 2;
+    -moz-flex: 2;
+     -ms-flex: 2;
+         flex: 2; 
+         margin: 0;
+         padding: 0;
+}
+
+.meal-container .meal-img img{
+    width: 150px;
+    height: 150px;
+}
+.meal-container .meal-details h3{
+    font-size: 23px;
+    margin: 10px 0;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.meal-container .meal-details {
+    -webkit-flex: 4;
+    -moz-flex: 4;
+     -ms-flex: 4;
+         flex: 4; 
+         display: block;
+         line-height: 1.5;
+         margin: 20px; 
+         padding: 0;
+}
+
+.order-summary h4{
+    text-align: center;
+}
+
+.order-summary button, .add-address button, .order button {
+    width: 100%; 
+    padding: 12px;
+    margin: 0;
+    background:#fff;
+    color: #ff654d ;
+    font-size: 18px;
+    font-weight: 800;
+    border: 2px solid #ff654d ;
+}
+.order button {
+    margin-top: 20px;
+}
+
+.order img {
+    width: 90%;
+}
+
+.add-address button  {
+    width: 40%;
+    padding: 7px;
+    margin-top: 10px;
+}
+
+
+.order-summary button:hover, .add-address button:hover, .order button:hover, .order-summary .buttonOrder:hover {
+    background: #ff654d;
+    color: #fff;
+    transition: 0.3s ease-in-out;
+}
+
+
+.order-summary .buttonOrder {
+    width: inherit;
+    text-align: center;
+    padding: 12px;
+    margin: 0;
+    background:#fff;
+    color: #ff654d ;
+    font-size: 18px;
+    font-weight: 800;
+    border: 2px solid #ff654d ;
+}
+
+.order-summary a { 
+    width: inherit;
+    text-decoration: none;
+}
+
+.modal-container-checkout {
+    position: fixed;
+    background-color: #fff;
+    left: 50%;
+    top: 5%;
+    bottom: 10%;
+    width: 70%;
+    padding: 20px;
+    display: -webkit-flex;
+    display:    -moz-flex;
+    display:     -ms-flex;
+    display:         flex;
+    -webkit-flex-direction: row;
+       -moz-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    border-radius: 5px 0px 0px 5px;
+
+    border-right: 10px solid #ff654d ;
+    max-width: 800px;
+    -webkit-transform: translate(-50%, -200%);
+    -ms-transform: translate(-50%, -200%);
+    transform: translate(-50%, -200%);  
+    transition: transform 200ms ease-out;
+    -webkit-transition: transform 200ms ease-out;
+    -ms-transition: transform 200ms ease-out;
+
+}
+
+.modal-checkout::before {
+    content: "";
+    position: fixed;
+    display: none;
+    background-color: rgba(0, 0, 0, .8);
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.modal-checkout:target::before{
+    display: block;
+}
+
+.modal-checkout:target .modal-container-checkout {
+    -webkit-transform: translate(-50%, 0%);
+    -ms-transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%);    
+}
+
+
+.modal-container-checkout .billing-address {
+    -webkit-flex: 4;
+    -moz-flex: 4;
+     -ms-flex: 4;
+         flex: 4; 
+}
+
+.modal-container-checkout .billing-address .addresses {
+    display: flex;
+    flex-direction: row;
+}
+
+.address {
+    border: 1px solid #ddd;
+    padding: 30px;
+    margin: 10px;
+    justify-content: center;
+    -webkit-flex: 4;
+    -moz-flex: 4;
+     -ms-flex: 4;
+         flex: 4;
+
+}
+.modal-container-checkout .meal-img img{
+    width: 80%;
+    height: 300px;
+}
+.modal-container-checkout .order h3{
+    font-size: 23px;
+    margin: 10px 0;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.modal-container-checkout .order {
+    -webkit-flex: 3;
+    -moz-flex: 3;
+     -ms-flex: 3;
+         flex: 3; 
+         display: block;
+         line-height: 1.5;
+}
+.order .checkout-billings{
+    background:  #9d0e3d;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.checkout-billings h4{
+    padding: 10px;
+    margin: 0;
+}
+
+input[type=text], input[type=email], input[type=password]{
+    border-bottom: 1px solid #e3d6d6;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0px;
+    width: 94%;
+    padding: 15px;
+    font-size: 15px;
+    margin-bottom: 0px;
+}
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus{
+    box-shadow: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    transition: 1.9 ease-in-out;
+    border-bottom: 2px solid #ff654d;
+}
+
+
+
