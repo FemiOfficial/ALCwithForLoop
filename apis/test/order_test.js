@@ -8,7 +8,7 @@ chai.use(chaiHttp);
 const should = chai.should();
 const { expect } = chai;
 
-describe('MENU ROUTES TESTS', () => {
+describe('ORDER ROUTES TESTS', () => {
   it('it should GET all order from the available meal options available for a particular day', (done) => {
     chai.request(server)
       .get('/api/v1/order')
