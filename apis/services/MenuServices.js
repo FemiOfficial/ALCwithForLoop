@@ -11,7 +11,7 @@ const MenuService = {
     if (
       dummyData.menu.length === 0
     ) {
-      mealOption.id = 1;
+      mealOption.id = '1';
       dummyData.menu.push(mealOption);
       return dummyData.menu;
     }
@@ -19,7 +19,7 @@ const MenuService = {
     const lastId = dummyData.menu[menuLength - 1].id;
     const newId = parseInt(lastId, 10) + 1;
 
-    mealOption.id = newId;
+    mealOption.id = `${newId}`;
 
     dummyData.menu.push(mealOption);
     return dummyData.menu;

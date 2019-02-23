@@ -65,7 +65,7 @@ const MealController = {
   },
 
   getSingleMeal(req, res) {
-    const id = req.params.id;
+    const { id } = req.params;
     const foundMeal = MealService.getAMeal(id);
     if (
       !foundMeal

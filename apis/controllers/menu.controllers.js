@@ -34,7 +34,7 @@ const MenuController = {
     }
 
     // Checking if a meal added to the menu by id actually exists
-    const mealExist = dummyData.meals.find(meal => (meal.id === parseInt(mealOption.meal_id, 10)));
+    const mealExist = dummyData.meals.find(meal => (meal.id === mealOption.meal_id));
     if (
       !mealExist
     ) {
