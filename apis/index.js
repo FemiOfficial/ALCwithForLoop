@@ -10,7 +10,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const PORT = 5000;
+const PORT = 3000;
 
 app.use('/api/v1/meals', mealsRoute);
 app.use('/api/v1/menu', menuRoute);
