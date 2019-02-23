@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Book A Meal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" type="text/css" href="public/css/style.css" />    
+
+    <script src="public/js/main.js"></script>
+</head>
+<body class="index">
+        <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="index.html"> <img src="public/img/pot.svg"/> Book-A-Meal</a>
+
+                <ul class="navbar-vendor">
+                    <li><a href="login.html">Login</a></li>
+                  
+                </ul>
+                
+                
+         </nav>
+      <!-- Register Component -->
+      <div class="col-md-6 card card-body register-div"  id="register-div" style="display: block" >
+            <img src="public/img/pot.svg"/>
+            <h2>Book A Meal</h2>
+            <!--         <form > -->
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email" />
+                        </div>
+                        <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Username" />
+                            </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password"/>
+                        </div>
+                        <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Confirm Password"/>
+                            </div>
+                        <button  onclick = "window.open('user_dashboard.html', '_self')" class = "btn-login">Register</button>
+                        <h4 class="text-center mt-2 alternative-login">OR</h4>
+                        <button class="btn btn-danger mt-1 google-login">Login with Google Account</button>
+    
+    
+                   <!--  </form> -->
+                </div>
+
+</body>
+</html>

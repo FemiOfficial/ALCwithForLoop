@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Admin::Book A Meal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="public/css/style.css" />    
+    <script src="public/js/main.js"></script>
+</head>
+<body>
+        <nav class="navbar navbar-expand-lg navbar-fixed navbar-light bg-light">
+                <a class="navbar-brand " href="index.html"> <img src="public/img/pot.svg"/> <strong class="title-text">Admin: Book-A-Meal</strong></a>
+                <a class="btn-toggle" title="Side bar"  onclick="toggleSideBar()" id="menu-toggle" href="#"><img src="public/img/menu.png" alt=""></a>
+
+                <ul class="admin-balance">
+                  <li>
+                      Today's Sale :  &#x20A6; 12,000
+                  </li>
+                  <li>
+                      Total Balance: &#x20A6; 120, 000
+                  </li>
+
+                </ul>
+
+         </nav>
+
+        <div id="wrapper">
+
+            <div id = "sidebar-wrapper">
+                <ul class="sidebar-nav mt-1">
+                    <li class="user-profile">
+                       <img src="public/img/user.png" alt="user-avatar"/>
+                       <p>John Doe</p>
+                       <small>johndoe@gmail.com</small>
+                    </li>
+                      <li><a href="#" id="set-menu" onclick="displayMenuSetupAdmin()"><i class="fas fa-utensils"></i>  Set Menu</a></li>
+                    <li><a href="#" id="order-info" onclick="displayOrderDetailsAdmin()"><i class="fas fa-history"></i> Today's Orders</a></li>
+                    <li><a href="#" id="income-info" ><i class="far fa-money-bill-alt"></i> Income: 12000</a></li>
+                    
+                    <li><a href="#"><i class="fas fa-cogs"></i>Settings</a></li>
+
+                </ul>
+
+            </div>
+            
+            <div id ="page-content-wrapper">
+                                <div class="container-fluid">
+                                        <div class="row">
+                                                
+                                            <div class="col-lg-12 " id = "setup-menu">
+                                                <h3 class="mb-3">Set-Up Today's  Menu</h3>
+                                                <div class="row grid-container" id="food-menu">
+                                                    
+                                                    <div class="col-md-2 mr-3 mb-2 admin-categories grid-item">
+                                                    <div class="header-categories">
+                                                        <h4>Categories</h4>
+                                                    </div>
+                                                    <table class="table table-striped" width="100%">
+                                                            <tbody id="categories-body"> 
+                                                                <script>
+                                                                    displayCategoryAdmin();
+                                                                </script>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-9 admin-categories-setup grid-item">
+                                                            <nav aria-label="breadcrumb ">
+                                                                    <ol class="breadcrumb header-categories-setup">
+                                                                      <li class="breadcrumb-item"><i class="fas fa-utensils"></i>Menu-Setup /</li>
+                                                                      <li class="breadcrumb-item active" aria-current="page">Starters</li>
+                                                                    </ol>
+                                                                  </nav>
+
+                                                                     
+                                                            <table class="table  table-hover categories-dashboard" >
+                                                                    <thead>
+                                                                      <tr>
+                                                                        <th>ID</th>
+                                                                        <th>Name</th>
+                                                                        <th>Quantity</th>
+                                                                        <th>Time</th>
+                                                                        <th>Unit Price</th>
+                                                                        <th>Availability</th>
+                                                                        <th>Modify</th>
+                                                                        <th>Delete</th>
+
+                                                                      </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                      <tr>
+                                                                        <td>3433363</td>  
+                                                                        <td>Roated Chicked</td>
+                                                                        <td>1</td>
+                                                                        <td>Breakfast</td>
+                                                                        <td>200</td> 
+                                                                        <td>Yes</td> 
+                                                                        <td><Button class="btn-edit">&#x270E</Button></td>
+                                                                        <td><Button class="btn-delete">&#x2716</Button></td>
+
+                                                                      </tr>
+                                                                      <tr>
+                                                                            <td>3433363</td>  
+                                                                            <td>Roated Chicked</td>
+                                                                            <td>1</td>
+                                                                            <td>Breakfast</td>
+                                                                            <td>200</td> 
+                                                                            <td>Yes</td> 
+                                                                            <td><Button class="btn-edit">&#x270E</Button></td>
+                                                                            <td><Button class="btn-delete">&#x2716</Button></td>
+                                                                          </tr>
+                                                                          
+                                                                  </tbody>
+                                                                  </table>
+                                                    </div>
+
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12" id="order-details" style="display: none">
+                                                    <div class="header-categories">
+                                                            <h4>Today's Orders</h4>
+                                                        </div>
+                                                    <table class="table table-hover table-order-details">
+                                                            <thead>
+                                                              <tr>
+                                                                <th>User</th>
+                                                                <th>Meal</th>                                         
+                                                                <th>Quantity</th>
+                                                                <th>Price</th>
+                                                                <th>Time Ordered</th>
+                                                                <th>Status</th>
+                                                                <th>Grant Order</th>
+                                                                <th>Decline Order</th>
+
+                                                              </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                              <tr>
+                                                                <td>John</td>
+                                                                <td>Eba and Egusi</td>
+                                                                <td>2</td>
+                                                                <td>2000</td>
+                                                                <td>12:34pm</td>
+                                                                <td>Pending</td>
+                                                                <td><Button class="btn-edit">&#x1F5F9</Button></td>
+                                                                <td><Button class="btn-delete">&#x2716</Button></td>
+
+                                                              </tr>
+                                                              <tr>
+                                                                    <td>John</td>
+                                                                    <td>Eba and Egusi</td>
+                                                                    <td>2</td>
+                                                                    <td>2000</td>
+                                                                    <td>12:34pm</td>
+                                                                    <td>Pending</td>
+                                                                    <td><Button class="btn-edit">&#x1F5F9</Button></td>
+                                                                    <td><Button class="btn-delete">&#x2716</Button></td>
+
+                                                                  </tr>
+                                                                  <tr>
+                                                                        <td>John</td>
+                                                                        <td>Eba and Egusi</td>
+                                                                        <td>2</td>
+                                                                        <td>2000</td>
+                                                                        <td>12:34pm</td>
+                                                                        <td>Pending</td>
+                                                                        <td><Button class="btn-edit">&#x1F5F9</Button></td>
+                                                                        <td><Button class="btn-delete">&#x2716</Button></td>
+
+                                                                      </tr>
+                                                            </tbody>
+                                                          </table>
+                                            </div>
+
+
+                                      
+
+
+                                        </div>
+                        
+                                    </div>
+                        </div>
+          
+
+        </div>
+    
+</body>
+</html>
