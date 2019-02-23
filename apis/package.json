@@ -1,0 +1,40 @@
+{
+  "name": "mealbookingapp",
+  "version": "1.0.0",
+  "description": "meal booking app",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node index.js",
+    "test": "mocha test/*.js --timeout 100000 --compilers js:@babel/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FemiOfficial/ALCwithForLoop.git"
+  },
+  "keywords": [
+    "meal",
+    "chop"
+  ],
+  "author": "femiofficial",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FemiOfficial/ALCwithForLoop/issues"
+  },
+  "homepage": "https://github.com/FemiOfficial/ALCwithForLoop#readme",
+  "dependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.3",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/register": "^7.0.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "eslint": "^5.14.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "mocha": "^6.0.1"
+  }
+}
