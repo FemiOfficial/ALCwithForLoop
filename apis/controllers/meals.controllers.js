@@ -72,7 +72,7 @@ const MealController = {
     ) {
       return res.status(404).json({
         status: 'failed',
-        data: 'Nothing found',
+        error: 'Nothing found',
       });
     }
     return res.status(200).json({
@@ -103,7 +103,7 @@ const MealController = {
         error,
       });
     }
-    const id = req.params.id;
+    const { id } = req.params;
     const mealtoEdit = MealService.getToEdit(id, req.body);
     return res.status(200).json({
       status: 'success',
@@ -112,7 +112,16 @@ const MealController = {
   },
 
   deleteAMeal(req, res) {
-    const id = req.params.id;
+    const { id } = req.params;
+    const foundMeal = MealService.getAMeal(id);
+    if (
+      !foundMeal
+    ) {
+      return res.status(404).json({
+        status: 'failed',
+        error: 'Invalid ID',
+      });
+    }
     const meals = MealService.getToDelete(id);
     return res.status(200).json({
       status: 'success',
