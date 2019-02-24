@@ -6,7 +6,7 @@ const chaiHttp = require('chai-http');
 
 chai.use(chaiHttp);
 const should = chai.should();
-const {expect} = chai;
+const { expect } = chai;
 
 describe('MEALS ROUTES TEST', () => {
   it('it should GET all the meals', (done) => {
@@ -31,8 +31,17 @@ describe('MEALS ROUTES TEST', () => {
       });
   });
 
+  it('it should RETURN A 404 Message for an invalid meal id', (done) => {
+    chai.request(server)
+      .get('/api/v1/meals/5')
+      .end((err, res) => {
+        res.body.should.have.property('error');
+        res.should.have.status(404);
+        done();
+      });
+  });
 
-  it('it should POST a meal', (done) => {
+  it('it should return error message for an incomplete POST of a meal', (done) => {
     const meal = {
       name: 'Eba and Okro',
       category: 'Swallows',
@@ -49,15 +58,126 @@ describe('MEALS ROUTES TEST', () => {
       });
   });
 
+  it('it should return error message for an incomplete POST of a meal', (done) => {
+    const meal = {
+      name: 'Eba and Okro',
+      size: '2',
+    };
+    chai.request(server)
+      .post('/api/v1/meals')
+      .send(meal)
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.a('object');
+        res.body.should.have.property('errors');
+        done();
+      });
+  });
 
-  it('it should EDIT a meal with a valid id', (done) => {
+  it('it should return error message for an incomplete POST of a meal', (done) => {
+    const meal = {
+      name: 'Eba and Okro',
+    };
+    chai.request(server)
+      .post('/api/v1/meals')
+      .send(meal)
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.a('object');
+        res.body.should.have.property('errors');
+        done();
+      });
+  });
+
+  it('it should return error message for POST A meal id which should be generated', (done) => {
+    const meal = {
+      id: '8',
+      currency: 'NGN',
+      size: 'bowl',
+    };
+    chai.request(server)
+      .post('/api/v1/meals')
+      .send(meal)
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.a('object');
+        res.body.should.have.property('errors');
+        done();
+      });
+  });
+  it('it should return error message for an incomplete POST of a meal', (done) => {
+    const meal = {
+      currency: 'NGN',
+      size: 'bowl',
+    };
+    chai.request(server)
+      .post('/api/v1/meals')
+      .send(meal)
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.a('object');
+        res.body.should.have.property('errors');
+        done();
+      });
+  });
+  it('it should POST a meal', (done) => {
+    const meal = {
+      name: 'Eba and Okro',
+      size: '2',
+      category: 'Swallows',
+      price: '300',
+      currency: 'NGN',
+    };
+    chai.request(server)
+      .post('/api/v1/meals')
+      .send(meal)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        res.body.should.have.property('data');
+        done();
+      });
+  });
+
+  it('it should Not EDIT a meal with an invalid id', (done) => {
     const meal = {
       name: 'Eba and Okro',
       category: 'Swallows',
       size: '2',
     };
     chai.request(server)
-      .put('/api/v1/meals/5')
+      .put('/api/v1/meals/7')
+      .send(meal)
+      .end((err, res) => {
+        res.body.should.have.property('error');
+        res.should.have.status(404);
+        done();
+      });
+  });
+
+  it('it should EDIT a meal with an invalid id', (done) => {
+    const meal = {
+      name: 'Eba and Okro',
+      category: 'Swallows',
+      size: '2',
+    };
+    chai.request(server)
+      .put('/api/v1/meals/4')
+      .send(meal)
+      .end((err, res) => {
+        res.body.should.have.property('data');
+        res.should.have.status(200);
+        done();
+      });
+  });
+  it('it should not EDIT a meal id', (done) => {
+    const meal = {
+      id: '1',
+      category: 'Swallows',
+      size: '2',
+    };
+    chai.request(server)
+      .put('/api/v1/meals/4')
       .send(meal)
       .end((err, res) => {
         res.body.should.have.property('error');
@@ -72,6 +192,16 @@ describe('MEALS ROUTES TEST', () => {
       .end((err, res) => {
         res.body.should.have.property('data');
         res.should.have.status(200);
+        done();
+      });
+  });
+
+  it('it should not DELETE a meal with an invalid id', (done) => {
+    chai.request(server)
+      .delete('/api/v1/meals/100')
+      .end((err, res) => {
+        res.body.should.have.property('error');
+        res.should.have.status(404);
         done();
       });
   });

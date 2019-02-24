@@ -16,7 +16,8 @@ const OrderService = {
       dummyData.order.push(order);
       return dummyData.order;
     }
-
+    // eslint-disable-next-line no-console
+    console.log("Add to order");
     const orderLength = dummyData.order.length;
     const lastId = dummyData.order[orderLength - 1].id;
     const newId = parseInt(lastId, 10) + 1;
