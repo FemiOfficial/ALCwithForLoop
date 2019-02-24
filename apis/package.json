@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node index.js",
-    "test": "nyc --require @babel/register mocha test/*.js --timeout 100000  --exit"
+    "test": "nyc --require @babel/register mocha test/*.js --timeout 100000  --exit",
+    "generate-lcov": "nyc report --reporter=text-lcov > lcov.info",
+    "coveralls-coverage": "coveralls < lcov.info",
+    "coverage": "npm test && npm run generate-lcov && npm run coveralls-coverage"
+
+
   },
   "repository": {
     "type": "git",
