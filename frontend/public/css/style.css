@@ -461,29 +461,19 @@ table.categories-dashboard{
     box-shadow: 10px 1px 30px #888888;
     transition: 0.2s ease-in-out;
 }
-#modal {
-    min-height: 100vh;
-    width: 100%;
-    background:#333;
-    z-index: 390;
-    padding: 20px 50px 50px 50px;
-    opacity: 0;
-    display: none;
-    
-}
-.modal-content{
-    background: #fff;
-    width: 75%;
-    padding: 0px 30px 30px 15px;
-    opacity: 2.9;
-    margin-left: 90px;
-     
-}
 .meal-item{
     /* padding: 20px 0px 0px 0px; */
     margin: 60px;
     border-radius: 5px;
     box-shadow: 10px 1px 30px #888888;
+}
+.meal-item:hover, .meal-modal-item:hover {
+    -ms-transform: rotate(-3deg);
+    -webkit-transform: rotate(-3deg);
+    -moz-transform: rotate(-3deg);
+    -o-transform: rotate(-3deg);
+    transform: rotate(-3deg); 
+    transition: 0.6s;
 }
 .meal-modal-item{
     margin: 20px;
@@ -493,7 +483,7 @@ table.categories-dashboard{
 .meal-item img, .meal-modal-item img{
     height: 180px;
     margin: 0;
-    width: inherit;
+    width: 100%;
 }
 .meal-modal-item h4, .meal-modal-item h5, .meal-modal-item h6,
  .meal-item h4, .meal-item h5, .meal-item h6{
@@ -501,8 +491,16 @@ table.categories-dashboard{
     margin: 10px 0px;
 }
 
-.meal-modal-item button, .meal-item button {
-    width: 100%; 
+.meal-modal-item a:hover, .meal-item a:hover, .meal-details button:hover,
+ .meal-modal-item .buttonOrder:hover , .meal-item .buttonOrder:hover, .meal-details .buttonOrder:hover{
+    background:#ff654d ;
+    color: #fff;
+    transition: 0.3s ease-in-out;
+}
+
+.meal-modal-item .buttonOrder, .meal-item .buttonOrder, .meal-details .buttonOrder {
+    width: inherit;
+    text-align: center;
     padding: 12px;
     margin: 0;
     background:#fff;
@@ -511,11 +509,12 @@ table.categories-dashboard{
     font-weight: 800;
     border: 2px solid #ff654d ;
 }
-.meal-modal-item button:hover, .meal-item button:hover{
-    background:#ff654d ;
-    color: #fff;
-    transition: 0.3s ease-in-out;
+
+.meal-modal-item a, .meal-details a, .meal-item a { 
+    width: inherit;
+    text-decoration: none;
 }
+
 .meal-modal-item .meal-title, .meal-item .meal-title {
     font-weight: 300;
 }
@@ -543,3 +542,114 @@ ul.admin-balance li {
     color:#9c651c;
     border: 2px solid #9c651c;
 }
+
+
+/* Modal for login notification */
+
+.modal-container {
+    position: fixed;
+    background-color: #fff;
+    left: 50%;
+    top: 10%;
+    width: 70%;
+    padding: 20px;
+    display: -webkit-flex;
+    display:    -moz-flex;
+    display:     -ms-flex;
+    display:         flex;
+    -webkit-flex-direction: row;
+       -moz-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    border-radius: 5px 0px 0px 5px;
+
+    border-right: 10px solid #ff654d ;
+    max-width: 800px;
+    -webkit-transform: translate(-50%, -200%);
+    -ms-transform: translate(-50%, -200%);
+    transform: translate(-50%, -200%);  
+    transition: transform 200ms ease-out;
+    -webkit-transition: transform 200ms ease-out;
+    -ms-transition: transform 200ms ease-out;
+
+}
+
+.modal::before {
+    content: "";
+    position: fixed;
+    display: none;
+    background-color: rgba(0, 0, 0, .8);
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.modal:target::before{
+    display: block;
+}
+
+.modal:target .modal-container {
+    -webkit-transform: translate(-50%, 0%);
+    -ms-transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%);    
+}
+
+.modal-container .meal-img {
+    -webkit-flex: 4;
+    -moz-flex: 4;
+     -ms-flex: 4;
+         flex: 4; 
+}
+
+.modal-container .meal-img img{
+    width: 80%;
+    height: 300px;
+}
+.modal-container .meal-details h3{
+    font-size: 23px;
+    margin: 10px 0;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+
+.modal-container .meal-details {
+    -webkit-flex: 3;
+    -moz-flex: 3;
+     -ms-flex: 3;
+         flex: 3; 
+         display: block;
+         line-height: 1.5;
+}
+
+.meal-details label {
+    font-size: 15px;
+
+}
+
+.meal-details a {
+    align-content: right;
+}
+
+input[type=number]{
+    border-bottom: 1px solid #e3d6d6;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0px;
+    width: 94%;
+    padding: 15px;
+    font-size: 15px;
+    margin-bottom: 18px;
+}
+input[type=number]:focus{
+    box-shadow: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    transition: 1.9 ease-in-out;
+    border-bottom: 2px solid #ff654d;
+}
+
+

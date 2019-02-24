@@ -203,7 +203,7 @@ a.navbar-brand{
 
 .meal-item:hover, .meal-modal-item:hover {
     -ms-transform: rotate(-3deg);
-    -webkit-transform: rotate(-3deg);
+    -webkit-transform: rotate(-3deg); 
     -moz-transform: rotate(-3deg);
     -o-transform: rotate(-3deg);
     transform: rotate(-3deg); 
