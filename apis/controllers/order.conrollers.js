@@ -13,20 +13,23 @@ const OrderControllers = {
   },
 
   addOrder(req, res) {
-    // Request body contains the meal_id and quantity to be added to the menu option
+    // Request body contains the menu_id and quantity to be ordered
     const order = req.body;
     const errors = [];
     order.day = today;
 
-    // Checking if a meal has already being ordered; if it has we just update the quantity intead
+    // Checking if a menu option has already being ordered; if it has we just update the quantity instead
     const checkIfOrdered = dummyData.order
-      .find(orderExisting => orderExisting.meal_id === order.meal_id);
+      .find(orderExisting => orderExisting.menu_id === order.menu_id);
     if (
       checkIfOrdered
     ) {
       const orderId = checkIfOrdered.id;
       dummyData.order[orderId - 1].quantity = parseInt(checkIfOrdered.quantity, 10) + 1;
-      return dummyData.order;
+      return res.status(200).json({
+        status: `updated quantity of order with id = ${orderId}`,
+        data: dummyData.order,
+      });
     }
 
     // Finding the meal option ordered by its id from the menu
@@ -78,17 +81,21 @@ const OrderControllers = {
   editOrder(req, res) {
     const data = req.body;
 
-    const id = req.params.id;
+    const { id } = req.params;
 
     const orderToEdit = dummyData.order.find(order => order.id === id);
 
     const errors = [];
-    const meal = dummyData.menu.find(mea => mea.id === data.menu_id);
 
     if (
-      !meal
+      data.menu_id
     ) {
-      errors.push({ msg: 'selected order does not exist in the menu options available for today' });
+      const meal = dummyData.menu.find(mea => mea.id === data.menu_id);
+      if (
+        !meal
+      ) {
+        errors.push({ msg: 'selected order does not exist in the menu options available for today' });
+      }
     }
 
     if (
