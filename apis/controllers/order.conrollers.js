@@ -20,7 +20,7 @@ const OrderControllers = {
 
     // Checking if a meal has already being ordered; if it has we just update the quantity intead
     const checkIfOrdered = dummyData.order
-      .find(orderExisting => parseInt(orderExisting.meal_id, 10) === order.meal_id);
+      .find(orderExisting => orderExisting.meal_id === order.meal_id);
     if (
       checkIfOrdered
     ) {
@@ -31,7 +31,7 @@ const OrderControllers = {
 
     // Finding the meal option ordered by its id from the menu
     const mealOrdered = dummyData.menu
-      .find(meal => parseInt(meal.id, 10) === order.menu_id);
+      .find(meal => meal.id === order.menu_id);
 
     if (
       mealOrdered

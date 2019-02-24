@@ -12,7 +12,7 @@ const OrderService = {
     if (
       dummyData.order.length === 0
     ) {
-      order.id = 1;
+      order.id = '1';
       dummyData.order.push(order);
       return dummyData.order;
     }
@@ -20,7 +20,7 @@ const OrderService = {
     const orderLength = dummyData.order.length;
     const lastId = dummyData.order[orderLength - 1].id;
     const newId = parseInt(lastId, 10) + 1;
-    order.id = newId;
+    order.id = `${newId}`;
 
     dummyData.order.push(order);
     return dummyData.order;
