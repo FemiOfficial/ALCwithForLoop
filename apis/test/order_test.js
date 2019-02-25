@@ -9,16 +9,6 @@ const should = chai.should();
 const { expect } = chai;
 
 describe('ORDER ROUTES TESTS', () => {
-  it('it should GET all order from the available meal options available for a particular day (length = 0)', (done) => {
-    chai.request(server)
-      .get('/api/v1/order')
-      .end((err, res) => {
-        res.body.should.have.property('data');
-        res.should.have.status(200);
-        expect(res.body).to.have.property('data').to.be.a('array').to.have.lengthOf(0, 'must have an item inserted into it');
-        done();
-      });
-  });
   it('it should POST a new order from the available meal options available for a particular day', (done) => {
     const order = {
       menu_id: '1',
@@ -44,7 +34,7 @@ describe('ORDER ROUTES TESTS', () => {
         done();
       });
   });
-  it('it should addto the quantity of the order since the menu option has been ordered for', (done) => {
+  it('it should add to the quantity of the order since the menu option has been ordered for', (done) => {
     const order = {
       menu_id: '1',
       quantity: 2,
@@ -62,7 +52,7 @@ describe('ORDER ROUTES TESTS', () => {
   });
   it('it should not POST an order for a menu option that does not exist', (done) => {
     const order = {
-      menu_id: '2',
+      menu_id: '6',
       quantity: 2,
       address: 'Otta',
       user: 'Alaye',
@@ -81,10 +71,9 @@ describe('ORDER ROUTES TESTS', () => {
       menu_id: '2',
       quantity: 2,
       address: 'Otta',
-      user: 'Alaye',
     };
     chai.request(server)
-      .put('/api/v1/order/1')
+      .put('/api/v1/order/4')
       .send(order)
       .end((err, res) => {
         res.body.should.have.property('errors');
