@@ -16,6 +16,6 @@ app.use('/api/v1/meals', mealsRoute);
 app.use('/api/v1/menu', menuRoute);
 app.use('/api/v1/order', orderRoute);
 
-app.listen(PORT, () => console.log(`app is running from ${PORT}`));
+app.listen(process.env.PORT || PORT, () => console.log(`app is running from ${PORT}`));
 
 export default app;
