@@ -49,16 +49,6 @@ describe('MENU ROUTES TESTS', () => {
         done();
       });
   });
-  it('it should GET all the menu options available (should be zero)', (done) => {
-    chai.request(server)
-      .get('/api/v1/menu')
-      .end((err, res) => {
-        res.body.should.have.property('data');
-        res.should.have.status(200);
-        expect(res.body).to.have.property('data').to.be.a('array').to.have.lengthOf(0, 'must have an item inserted into it');
-        done();
-      });
-  });
   it('it should POST a new menu option since the id provided is available', (done) => {
     const meal = {
       meal_id: '4',
@@ -101,7 +91,6 @@ describe('MENU ROUTES TESTS', () => {
         done();
       });
   });
-
 
   it('it should GET all the menu options available for a particular day', (done) => {
     chai.request(server)

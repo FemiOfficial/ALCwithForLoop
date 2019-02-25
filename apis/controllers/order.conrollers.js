@@ -111,6 +111,12 @@ const OrderControllers = {
     }
 
     if (
+      data.price
+    ) {
+      errors.push({ msg: 'cannot edit price of order' });
+    }
+
+    if (
       errors.length > 0
     ) {
       return res.status(400).json({

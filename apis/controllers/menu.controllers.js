@@ -23,6 +23,12 @@ const MenuController = {
       error.push({ msg: 'Quantity field is required' });
     }
 
+    if (
+      req.body.price
+    ) {
+      error.push({ msg: 'Cannot update price here' });
+    }
+
     // Checking if a meal has already been added to menu for a partcular day
     const mealExistinMenu = dummyData.menu
       .find(meal => (meal.meal_id === mealOption.meal_id) && (meal.day === mealOption.day));
@@ -84,6 +90,12 @@ const MenuController = {
       error.push({ msg: 'cannot edit meal name from menu' });
     }
     if (
+      req.body.price
+    ) {
+      error.push({ msg: 'cannot edit meal price from menu' });
+    }
+
+    if (
       error.length > 0
     ) {
       return res.status(404).json({
@@ -91,7 +103,7 @@ const MenuController = {
         error,
       });
     }
-    const id = req.params.id;
+    const { id } = req.params;
     const menutoEdit = MenuServices.editMenuOption(id, req.body);
     return res.status(200).json({
       status: 'success',

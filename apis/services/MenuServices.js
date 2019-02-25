@@ -7,6 +7,8 @@ const MenuService = {
   setUpMenu(data) {
     const mealOption = data;
     mealOption.day = today;
+    const meal = dummyData.meals.find(mea => mea.id === data.meal_id);
+    mealOption.price = meal.price;
 
     if (
       dummyData.menu.length === 0
@@ -25,12 +27,14 @@ const MenuService = {
     return dummyData.menu;
   },
 
-  editMenuOption(id, data) {    
-    const menu = dummyData.menu;
+  editMenuOption(id, data) {
+    const { menu } = dummyData;
     if (
       data.meal_id
     ) {
       menu[id - 1].meal_id = data.meal_id;
+      const meal = dummyData.meals.find(mea => mea.id === data.meal_id);
+      menu[id - 1].price = meal.price;
     }
 
     if (
@@ -49,6 +53,7 @@ const MenuService = {
       meal.meal_name = data.meal_name;
       meal.quantity = data.quantity;
       meal.day = data.day;
+      meal.price = data.price;
 
       return meal;
     });

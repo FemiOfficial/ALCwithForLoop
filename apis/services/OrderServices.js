@@ -8,6 +8,8 @@ const OrderService = {
   addOrder(data) {
     const order = data;
     order.day = today;
+    const menu = dummyData.menu.find(men => men.id === data.menu_id);
+    order.price = parseInt(menu.price, 10) * parseInt(order.quantity, 10);
 
     if (
       dummyData.order.length === 0
@@ -16,8 +18,6 @@ const OrderService = {
       dummyData.order.push(order);
       return dummyData.order;
     }
-    // eslint-disable-next-line no-console
-    console.log("Add to order");
     const orderLength = dummyData.order.length;
     const lastId = dummyData.order[orderLength - 1].id;
     const newId = parseInt(lastId, 10) + 1;
@@ -32,16 +32,16 @@ const OrderService = {
     if (
       data.menu_id
     ) {
-      const meal = dummyData.menu.find(mea => mea.id === data.menu_id);
-      data.meal_name = meal.name;
-      orderToEdit.meal_name = data.meal_name;
-      orderToEdit.menu_id = data.menu_id;
-    }
+      const menu = dummyData.menu.find(mea => mea.id === data.menu_id);
 
-    if (
-      data.quantity
-    ) {
-      orderToEdit.quantity = data.quantity;
+      orderToEdit.menu_name = menu.menu_name;
+      if (
+        data.quantity
+      ) {
+        orderToEdit.price = parseInt(data.quantity, 10) * parseInt(menu.price, 10);
+        orderToEdit.quantity = data.quantity;
+      }
+      orderToEdit.menu_id = data.menu_id;
     }
 
     if (
@@ -60,6 +60,7 @@ const OrderService = {
       order.meal_name = data.meal_name;
       order.quantity = data.quantity;
       order.address = data.address;
+      order.price = data.price;
       order.user = data.user;
       order.day = data.day;
       return order;
