@@ -1,6 +1,11 @@
+[![Build Status](https://travis-ci.org/FemiOfficial/ALCwithForLoop.svg?branch=apis)](https://travis-ci.org/FemiOfficial/ALCwithForLoop)
+
+[![Coverage Status](https://coveralls.io/repos/github/FemiOfficial/ALCwithForLoop/badge.svg?branch=feature%2Ftravis-ci)](https://coveralls.io/github/FemiOfficial/ALCwithForLoop?branch=feature%2Ftravis-ci)
+
+
 # ALCwithForLoop
 # Meal Booking REACT Application 
-# UI link - https://femiofficial.github.io/ALCwithForLoop/frontend
+## UI link - https://femiofficial.github.io/ALCwithForLoop/frontend
 
 ## Completed all endpoints 
 
