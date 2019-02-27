@@ -195,7 +195,7 @@ a.navbar-brand{
     }
 }
 .meal-modal-item{
-    margin: 20px;
+    margin: 25px;
     border-radius: 5px;
     box-shadow: 10px 1px 30px #888888;
     animation: fadein 1.1s; 
@@ -203,7 +203,7 @@ a.navbar-brand{
 
 .meal-item:hover, .meal-modal-item:hover {
     -ms-transform: rotate(-3deg);
-    -webkit-transform: rotate(-3deg);
+    -webkit-transform: rotate(-3deg); 
     -moz-transform: rotate(-3deg);
     -o-transform: rotate(-3deg);
     transform: rotate(-3deg); 
