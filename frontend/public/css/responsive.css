@@ -1,0 +1,7 @@
+/* Responsive */
+@media (max-width: 640px) {
+    .grid-container {
+      grid-template-columns: 1fr;
+      
+    }
+  }

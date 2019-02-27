@@ -163,7 +163,6 @@ button.index-login {
     margin-right: 0px;
 }
 
-
 .bg-light{
     background: #ffffff;
     padding: 10px;
@@ -463,7 +462,7 @@ table.categories-dashboard{
 }
 .meal-item{
     /* padding: 20px 0px 0px 0px; */
-    margin: 60px;
+    margin: 25px;
     border-radius: 5px;
     box-shadow: 10px 1px 30px #888888;
 }
