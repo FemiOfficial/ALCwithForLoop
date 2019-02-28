@@ -14,7 +14,7 @@
 <body>
         <div class="index-banner">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="#"> <img src="public/img/pot.svg"/> Book-A-Meal</a>
+                        <a class="navbar-brand" href="#"><embed src="public/img/bookmealLogo.svg"/> </a>
         
                         <ul class="navbar-vendor">
                             <li><a href="login.html">Login</a></li>
@@ -24,20 +24,34 @@
                         
                         
                  </nav>
-
+               
                  <div class="row  index-page-content">
                         <div class="index-info">
                                 <div class="index-info-content">
-                                    <h1>Order A Meal Now!</h1>
+                                        <h1 id="words">
+                                        
+                                        </h1>
+                                        <script>
+                                        typeHi();
+                                        setTimeout(deleteHi,1700);
+                                        setTimeout(leaveMessage,2600);
+                                        </script>
                                     <span class="index-hint">
                                         Quick and Easy Meal Order!
                                     </span></br><br>
+
+                                    <a href="#available-meal">
+                                                <div class="buttonOrder">
+                                                        <span>What do we have?</span>
+                                                </div>
+                                    </a>
+
                                 </div>
                         </div>
                 </div>
         </div>
     <div class="container index-page">
-            <div class="available-meal">
+            <div class="available-meal" id = "available-meal">
                 <h1>Popular Available Meal</h1>
                     <div class="grid-container available-meal-grid">
                             <div class="meal-item">

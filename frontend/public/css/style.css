@@ -13,8 +13,27 @@ body.index{
     width: 100%;
     height: 100%;
 }
+
+#blinker{
+    width: 8px;
+    height: 60px;
+    
+    background-color: #fff;
+    animation: blinking .8s infinite;
+  }
+  
+  @keyframes blinking {
+    0 , 100%{
+      background-color: #fff;
+    }
+    
+    50% {
+      background-color: #444444;
+    }
+  }
+
 .index-banner{
-    padding: 0px 30px 70px 30px;
+    padding: 0px 0px 70px 0px;
     background: url('../img/bg-2.jpg') no-repeat center center fixed;
     background-size: cover;
 
@@ -84,8 +103,6 @@ table, th, td {
 }   
 
 .login-div img, .register-div img { 
-    height: 50px;
-    width: 100px;
     justify-content: center
 }
 .alternative-login{
@@ -121,12 +138,38 @@ button.google-login{
 .index-info-content{
     padding: 50px;
 }
+
+.index-info-content a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.index-info-content .buttonOrder {
+    border: 2px solid #fff;
+    width: 15%;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 19px;
+    font-weight: 500;
+
+}
+
+.index-info-content .buttonOrder:hover{
+    background: #fff;
+    color: #9d0e3d;
+    box-shadow: 2px 1px 5px #333;
+    transition: 0.6s ease-in-out;
+
+}
+
 .index-info-content h1{
     font-size: 50px;
     margin-bottom:10px; 
 }
 .index-page-content{
 padding-top: 100px;
+margin-left:20px;
     
 }
 .index-hint{
@@ -252,12 +295,6 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus{
     border-radius: 0px;
     
 }
-
-.navbar img{
-    width: 35px;
-    height: 35px;
-}
-
 
 /* SideBar */
 #sidebar-wrapper{

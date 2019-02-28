@@ -33,8 +33,12 @@ a.navbar-brand{
     font-weight: 700;
 } 
 .navbar img{
-    width: 35px;
+    height:46px;
+}
+.navbar img.sidebar-img{
     height: 35px;
+    width:35px;
+
 }
 
  

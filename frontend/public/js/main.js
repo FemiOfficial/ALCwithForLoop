@@ -185,3 +185,42 @@ const completeOrder = () => {
     alert("Thank you making this order, your meal is on the way!");
     window.open('user_dashboard.html', '_self');
 }
+
+// Type launcher demo typing
+
+
+var i = 0;
+var txt = "Food is Ready!";
+var speed = 100;
+var doThis = true;
+var message ="Place your Order sharply!";
+var p = 0;
+
+function typeHi() {
+  if (i < txt.length) {
+    document.getElementById("words").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeHi, speed);
+  } 
+};
+
+function deleteHi(){
+  if (o >= 0) {
+    document.getElementById("words").innerHTML = txt.substr(0,o);
+    o--;
+   setTimeout(deleteHi,60);
+  }
+    
+};
+
+var o = 12;
+
+function leaveMessage () {
+   if (p < message.length) {
+    document.getElementById("words").innerHTML += message.charAt(p);
+    p++;
+    setTimeout(leaveMessage, speed);
+  } 
+};
+
+
