@@ -37,7 +37,7 @@ const OrderControllers = {
     }
 
     if (errors.length > 0) {
-      return res.status(404).json({
+      return res.status(400).json({
         status: 'failed',
         errors,
       });
@@ -48,7 +48,7 @@ const OrderControllers = {
         orderAdded,
       });
     } catch (error) {
-      return res.status(500).json({
+      return res.status(404).json({
         status: 'failed',
         error,
       });
@@ -68,18 +68,6 @@ const OrderControllers = {
       data.userId
     ) {
       errors.push({ msg: 'cannot edit who made this order' });
-    }
-
-    if (
-      data.refCode
-    ) {
-      errors.push({ msg: 'cannot edit who the refCode for this order' });
-    }
-
-    if (
-      data.price
-    ) {
-      errors.push({ msg: 'cannot edit price of order' });
     }
 
     if (

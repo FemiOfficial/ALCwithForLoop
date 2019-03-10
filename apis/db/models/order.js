@@ -11,14 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     isCancelled: DataTypes.BOOLEAN,
     isDelivered: DataTypes.BOOLEAN,
     quantity: DataTypes.STRING,
-  }, {
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    deletedAt: 'deletedAt',
-    timestamps: true,
-    paranoid: true,
-    underscored: true,
-  });
+  }, {});
   Order.associate = (models) => {
     Order.belongsTo(models.User, {
       foreignKey: 'catererId',

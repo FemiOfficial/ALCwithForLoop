@@ -16,8 +16,6 @@ module.exports = {
     permission: [permissions.GLOBAL],
     roleId: 1,
     password: hashPassword('oloreofe'),
-    createdAt: now,
-    updatedAt: now,
   },
   {
     firstname: 'John',
@@ -28,8 +26,6 @@ module.exports = {
     permission: [permissions.GLOBAL],
     roleId: 1,
     password: hashPassword('oloreofe'),
-    createdAt: now,
-    updatedAt: now,
   },
   {
     firstname: 'John',
@@ -40,8 +36,6 @@ module.exports = {
     permission: [permissions.WRITE_ORDER, permissions.READ_MENU, permissions.READ_ORDER],
     roleId: 3,
     password: hashPassword('oloreofe'),
-    createdAt: now,
-    updatedAt: now,
   },
   ], {}),
 

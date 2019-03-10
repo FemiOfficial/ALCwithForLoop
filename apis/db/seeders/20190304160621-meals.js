@@ -11,8 +11,6 @@ module.exports = {
     category: 'Salads',
     orderedTimes: 1,
     catererId: 1,
-    createdAt: now,
-    updatedAt: now,
   },
   {
     price: 500.0,
@@ -22,8 +20,6 @@ module.exports = {
     category: 'Salads',
     orderedTimes: 3,
     catererId: 1,
-    createdAt: now,
-    updatedAt: now,
   }], {}),
   down: queryInterface => queryInterface.bulkDelete('Meals', null, {}),
 };

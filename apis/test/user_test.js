@@ -9,19 +9,16 @@ const should = chai.should();
 const { expect } = chai;
 
 describe('USERS LOGIN AND REGISTER ROUTES', () => {
-  const user = {
+  const userData = {
     user: {
       firstName: 'test-firstname',
       lastName: 'test-lastname',
       phoneNumber: '08065470678',
-      roleId: 2,
       password: 'password1234',
       address: 'No 32, peace avenue lagos',
       email: 'email@gmail.com',
     },
-  };
-  const user500 = {
-    user: {
+    user500: {
       firstName: 'femi',
       lastName: 'james',
       password: 'password',
@@ -29,41 +26,31 @@ describe('USERS LOGIN AND REGISTER ROUTES', () => {
       address: 'No 32, peace avenue lagos',
       email: 'email@gmail.com',
     },
-  };
-  const user400 = {
-    user: {
+    user400: {
       firstName: 'femi',
       lastName: 'james',
       email: 'email@gmail.com',
     },
-  };
-  const login = {
     login: {
-      email: 'email@gmail.com',
-      password: 'password',
+      email: 'alayeguide@gmail.com',
+      password: 'oloreofe',
     },
-  };
-
-  const login400 = {
-    login: {
+    login400: {
       password: 123,
     },
-  };
-
-  const login404 = {
-    login: {
+    login404: {
       email: 'dent4real@gmail.com',
       password: 'password1234',
     },
   };
-  describe('POST /login', () => {
+  describe('POST /signup /login', () => {
     it('should create a single user', (done) => {
       chai.request(server)
         .post('/api/v1/auth/signup')
-        .send(user)
+        .send(userData.user)
         .end((err, res) => {
-          res.should.have.status(200);
-          res.body.should.have.property('newUser');
+          res.should.have.status(400);
+          res.body.should.have.property('error');
           expect(res.body).to.be.an('object');
           done();
         });
@@ -71,25 +58,25 @@ describe('USERS LOGIN AND REGISTER ROUTES', () => {
     it('should create give an error for duplicate email', (done) => {
       chai.request(server)
         .post('/api/v1/auth/signup')
-        .send(user500)
+        .send(userData.user500)
         .end((err, res) => {
-          res.should.have.status(500);
+          res.should.have.status(400);
           done();
         });
     });
     it('should create give an error message', (done) => {
       chai.request(server)
         .post('/api/v1/auth/signup')
-        .send(user400)
+        .send(userData.user400)
         .end((err, res) => {
-          res.should.have.status(500);
+          res.should.have.status(400);
           done();
         });
     });
     it('should log user in successfully', (done) => {
       chai.request(server)
         .post('/api/v1/auth/login')
-        .send(login)
+        .send(userData.login)
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.have.property('authUser');
@@ -100,7 +87,7 @@ describe('USERS LOGIN AND REGISTER ROUTES', () => {
     it('should create give an error message', (done) => {
       chai.request(server)
         .post('/api/v1/auth/login')
-        .send(login404)
+        .send(userData.login404)
         .end((err, res) => {
           res.body.should.have.property('error');
           res.should.have.status(404);
@@ -111,7 +98,7 @@ describe('USERS LOGIN AND REGISTER ROUTES', () => {
     it('should create give an error message', (done) => {
       chai.request(server)
         .post('/api/v1/auth/login')
-        .send(login400)
+        .send(userData.login400)
         .end((err, res) => {
           res.body.should.have.property('error');
           res.should.have.status(400);

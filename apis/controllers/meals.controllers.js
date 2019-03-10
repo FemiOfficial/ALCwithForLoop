@@ -1,4 +1,5 @@
 import MealService from '../services/MealServices';
+import database from '../db/models';
 
 const MealController = {
   async test(req, res) {
@@ -84,33 +85,56 @@ const MealController = {
     try {
       const { id } = req.params;
       const catererId = req.decodedToken.id;
-      const checkCaterer = MealService.checkCaterer(id, catererId);
-      if (!checkCaterer) {
-        return res.status(400).json({
-          status: "only this meal's caterer can update this meal",
-        }); 
-      }
-      const mealtoEdit = MealService.editMeal(id, req.body, catererId);
-      if (!mealtoEdit) {
-        return res.status(404).json({
-          status: 'failed to update meal',
+      let response = {};
+      database.Meal.count({ where: { id } })
+        .then((count) => {
+          if (count > 0) {
+            const checkCaterer = MealService.checkCaterer(id, catererId);
+            if (!checkCaterer) {
+              response = res.status(400).json({
+                status: "only this meal's caterer can update this meal",
+              });
+            }
+            const mealtoEdit = MealService.editMeal(id, req.body, catererId);
+            if (!mealtoEdit) {
+              response = res.status(404).json({
+                status: 'failed to update meal',
+              });
+            }
+            response = res.status(200).json({
+              status: 'success',
+              data: mealtoEdit,
+            });
+          } else {
+            response = res.status(404).json({
+              error: 'meal id is not available',
+            });
+          }
         });
-      }
-      return res.status(200).json({
-        status: 'success',
-        data: mealtoEdit,
-      });
+      return response;
     } catch (error) {
       return res.status(500).json({ error });
     }
   },
 
-  async deleteAMeal(req, res) {
+  deleteAMeal(req, res) {
     try {
-      const deleteMeal = await MealService.deleteMeal(req.params.id);
-      return res.status(200).json({
-        deleteMeal,
-      });
+      const { id } = req.params;
+      let response = {};
+      database.Meal.count({ where: { id } })
+        .then((count) => {
+          if (count > 0) {
+            const deleteMeal = MealService.getToDelete(req.params.id);
+            response = res.status(200).json({
+              deleteMeal,
+            });
+          } else {
+            response = res.status(404).json({
+              error: 'meal id is not available',
+            });
+          }
+        });
+      return response;
     } catch (error) {
       return res.status(500).json({ error });
     }

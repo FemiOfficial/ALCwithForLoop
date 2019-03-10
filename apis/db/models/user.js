@@ -22,14 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
     password: DataTypes.STRING,
-  }, {
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    deletedAt: 'deletedAt',
-    timestamps: true,
-    paranoid: true,
-    underscored: true,
-  });
+  }, {});
   User.associate = (models) => {
     User.belongsTo(models.Role, {
       foreignKey: 'roleId',

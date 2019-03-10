@@ -31,17 +31,6 @@ module.exports = {
     orderedTimes: {
       type: Sequelize.INTEGER,
     },
-    createdAt: {
-      allowNull: false,
-      type: Sequelize.DATE,
-    },
-    updatedAt: {
-      allowNull: false,
-      type: Sequelize.DATE,
-    },
-    deletedAt: {
-      type: Sequelize.DATE,
-    },
   }),
   down: queryInterface => queryInterface.dropTable('Meals'),
 };

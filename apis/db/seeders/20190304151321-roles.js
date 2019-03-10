@@ -11,8 +11,6 @@ module.exports = {
       displayName: 'Main Caterer',
       description: 'The role for the caterer with global capabilities',
       permission: [permissions.GLOBAL],
-      createdAt: now,
-      updatedAt: now,
     },
     {
       name: 'caterer',
@@ -21,8 +19,6 @@ module.exports = {
       permission: [permissions.READ_MEAL, permissions.READ_MENU,
         permissions.WRITE_MEAL, permissions.WRITE_MENU,
         permissions.READ_ORDER, permissions.READ_ORDER_ITEM, permissions.READ_USER],
-      createdAt: now,
-      updatedAt: now,
     },
     {
       name: 'user',
@@ -30,8 +26,6 @@ module.exports = {
       description: 'The role for the regular users (customers) on the app',
       permission: [permissions.READ_MENU,
         permissions.WRITE_ORDER, permissions.WRITE_ORDER_ITEM, permissions.READ_USER],
-      createdAt: now,
-      updatedAt: now,
     },
   ], {}),
 

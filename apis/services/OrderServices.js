@@ -19,7 +19,7 @@ const OrderService = {
     const error = {
       error: 'menu option is not available',
     };
-    return error;
+    throw error;
   },
   async editOrder(id, userId, order) {
     try {

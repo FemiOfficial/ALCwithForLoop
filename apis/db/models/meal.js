@@ -8,14 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     isMenu: DataTypes.BOOLEAN,
     price: DataTypes.DOUBLE,
     orderedTimes: DataTypes.INTEGER,
-  }, {
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    deletedAt: 'deletedAt',
-    timestamps: true,
-    paranoid: true,
-    underscored: true,
-  });
+  }, {});
   Meal.associate = (models) => {
     Meal.belongsTo(models.User, {
       foreignKey: 'catererId',

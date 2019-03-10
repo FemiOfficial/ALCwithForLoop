@@ -16,14 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       defaultValue: [],
     },
-  }, {
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    deletedAt: 'deletedAt',
-    timestamps: true,
-    paranoid: true,
-    underscored: true,
-  });
+  }, {});
   Role.associate = (models) => {
     Role.hasMany(models.User, {
       foreignKey: 'roleId',
