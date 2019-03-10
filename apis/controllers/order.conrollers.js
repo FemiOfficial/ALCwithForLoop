@@ -1,122 +1,76 @@
 import OrderServices from '../services/OrderServices';
-import dummyData from '../utils/dummyData';
-import today from '../utils/date';
+import PermissionList from '../config/permission';
 
 const OrderControllers = {
 
-  fetchAllOrders(req, res) {
-    const allOrders = OrderServices.allOrders();
-    return res.status(200).json({
-      status: 'success',
-      data: allOrders,
-    });
-  },
-
-  addOrder(req, res) {
-    // Request body contains the menu_id and quantity to be ordered
-    const order = req.body;
-    const errors = [];
-    order.day = today;
-
-    // Checking if a menu option has already being ordered; if it has we just update the quantity instead
-    const checkIfOrdered = dummyData.order
-      .find(orderExisting => orderExisting.menu_id === order.menu_id);
-    if (
-      checkIfOrdered
-    ) {
-      const orderId = checkIfOrdered.id;
-      dummyData.order[orderId - 1].quantity = parseInt(checkIfOrdered.quantity, 10) + 1;
+  async fetchAllOrders(req, res) {
+    try {
+      const userId = req.decodedToken.id;
+      const isAdmin = req.decodedToken.permissions.includes(PermissionList.WRITE_MEAL) || false;
+      const allOrders = await OrderServices.allOrders(userId, isAdmin);
       return res.status(200).json({
-        status: `updated quantity of order with id = ${orderId}`,
-        data: dummyData.order,
+        status: 'success',
+        data: allOrders,
+      });
+    } catch (error) {
+      return res.status(500).json({
+        status: 'failed',
+        error,
       });
     }
+  },
 
-    // Finding the meal option ordered by its id from the menu
-    const mealOrdered = dummyData.menu
-      .find(meal => meal.id === order.menu_id);
+  async addOrder(req, res) {
+    // Request body contains the menu_id and quantity to be ordered
+    const order = req.body;
+    order.userId = req.decodedToken.id;
 
-    if (
-      mealOrdered
-    ) {
-      order.meal_name = mealOrdered.name;
-    } else {
-      errors.push({ msg: 'ordered for a meal option that does not exist in the menu' });
+    order.isCancelled = false;
+    order.isDelivered = false;
+    const errors = [];
+    if (!req.body.mealId) {
+      errors.push({ msg: 'meal id cannot be empty here' });
     }
 
-    if (
-      order.address == null
-    ) {
-      errors.push({ msg: 'order address cannot be empty' });
+    if (!req.body.quantity) {
+      order.quantity = 1;
     }
 
-    if (
-      order.quantity == null
-    ) {
-      errors.push({ msg: 'order quantity cannot be empty' });
-    }
-
-    if (
-      order.user == null
-    ) {
-      errors.push({ msg: 'order owner cannot be empty' });
-    }
-
-    if (
-      errors.length > 0
-    ) {
+    if (errors.length > 0) {
       return res.status(400).json({
         status: 'failed',
         errors,
       });
     }
-    const newOrder = req.body;
-    const data = OrderServices.addOrder(newOrder);
-    return res.status(200).json({
-      status: 'success',
-      data,
-    });
+    try {
+      const orderAdded = await OrderServices.addOrder(order);
+      return res.status(200).json({
+        orderAdded,
+      });
+    } catch (error) {
+      return res.status(404).json({
+        status: 'failed',
+        error,
+      });
+    }
   },
 
-  editOrder(req, res) {
+  async editOrder(req, res) {
     const data = req.body;
 
     const { id } = req.params;
 
-    const orderToEdit = dummyData.order.find(order => order.id === id);
+    const userId = req.decodedToken.id;
 
     const errors = [];
 
     if (
-      data.menu_id
-    ) {
-      const meal = dummyData.menu.find(mea => mea.id === data.menu_id);
-      if (
-        !meal
-      ) {
-        errors.push({ msg: 'selected order does not exist in the menu options available for today' });
-      }
-    }
-
-    if (
-      !orderToEdit
-    ) {
-      errors.push({ msg: 'order does not exist' });
-    }
-
-    if (
-      data.user
+      data.userId
     ) {
       errors.push({ msg: 'cannot edit who made this order' });
     }
 
     if (
-      data.price
-    ) {
-      errors.push({ msg: 'cannot edit price of order' });
-    }
-
-    if (
       errors.length > 0
     ) {
       return res.status(400).json({
@@ -124,13 +78,19 @@ const OrderControllers = {
         errors,
       });
     }
-    const editInfo = req.body;
-    const editId = req.params.id;
-    const orderEdit = OrderServices.editOrder(editId, editInfo);
-    return res.status(200).json({
-      status: 'success',
-      data: orderEdit,
-    });
+
+    try {
+      const orderEdit = await OrderServices.editOrder(id, userId, data);
+      return res.status(200).json({
+        status: 'success',
+        data: orderEdit,
+      });
+    } catch (error) {
+      return res.status(500).json({
+        status: 'failed',
+        errors,
+      });
+    }
   },
 };
 

@@ -1,79 +1,53 @@
-import dummyData from '../utils/dummyData';
-
-const Meals = require('../models/Meals');
-
+import database from '../db/models';
 
 const MealService = {
-  fetchAllMeals() {
-    const allMeals = dummyData.meals.map((data) => {
-      const meal = new Meals();
-      meal.id = data.id;
-      meal.name = data.name;
-      meal.size = data.size;
-      meal.category = data.category;
-      meal.price = data.price;
-      meal.currency = data.currency;
-      return meal;
-    });
-    return allMeals;
+  async fetchAllMeals(catererId) {
+    const meals = database.Meal.findAll({ where: catererId });
+    return meals;
   },
 
-  getAMeal(id) {
-    const meal = dummyData.meals.find(mea => mea.id === id);
+  async getAMeal(id) {
+    const meal = database.Meal.findOne({ where: { id } });
     return meal;
   },
 
-  addMeal(data) {
-    const mealsLength = dummyData.meals.length;
-    const lastId = dummyData.meals[mealsLength - 1].id; 
-    const newId = parseInt(lastId, 10) + 1;
-    data.id = `${newId}`;
-    dummyData.meals.push(data);
-    return dummyData.meals;
+  async addMeal(data) {
+    const newMeal = await database.Meal.create(data);
+    return newMeal;
   },
 
-  getToEdit(id, data) {
-    const meals = dummyData.meals;
-    if (
-      data.name
-    ) {
-      meals[id - 1].name = data.name;
+  async editMeal(id, data, catererId) {
+    try {
+      const updatedMeal = await database.Meal.update(data, { where: { catererId, id } });
+      if (updatedMeal[0] === 0) {
+        const err = { error: 'an error occured' };
+        throw err;
+      }
+      const response = {
+        message: 'meal updated successfully',
+        updatedMeal,
+      };
+      return response;
+    } catch (e) {
+      throw e;
     }
-
-    if (
-      data.category
-    ) {
-      meals[id - 1].category = data.category;
-    }
-
-    if (
-      data.currency
-    ) {
-      meals[id - 1].currency = data.currency;
-    }
-
-    if (
-      data.size
-    ) {
-      meals[id - 1].size = data.size;
-    }
-    return meals[id - 1];
   },
 
-  getToDelete(id) {
-    const error = { msg: 'cannot find id' };
-    const meals = dummyData.meals;
-    const mealsLength = dummyData.meals.length;
-    const newMealsLength = dummyData.meals.filter(meal => meal.id !== id).length;
-
-    if (
-      mealsLength === newMealsLength
-    ) {
-      return error;
+  async getToDelete(id) {
+    const meal = await database.Meals.destroy({ where: { id } });
+    if (meal === 0) {
+      const err = { error: 'an error occured' };
+      throw err;
     }
-    const index = dummyData.meals.findIndex(meal => meal.id === id);
-    meals.splice(index, 1);
-    return meals;
+    return meal;
+  },
+
+  async checkCaterer(id, catererId) {
+    const meal = await database.Meal.findOne({ where: { id, catererId } });
+    if (meal === null) {
+      return false;
+    }
+    return true;
   },
 };
 

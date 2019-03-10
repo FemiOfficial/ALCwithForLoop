@@ -5,7 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "babel-node ./apis/index.js",
-    "test": "nyc --require @babel/register mocha ./apis/test/*.js --timeout 100000  --exit",
+    "sequelize": "./node_modules/.bin/sequelize",
+    "migrate": "npm run sequelize db:migrate",
+    "migrate-test": "npm run sequelize db:migrate",
+    "migrate-test_undo": "npm run sequelize db:migrate:undo:all",
+    "seed": "npm run sequelize db:seed:all",
+    "node_env": "set NODE_ENV=test echo $NODE_ENV",
+    "seed-test": "npm run sequelize db:seed:all",
+    "test": "npm run migrate-test_undo && npm run migrate-test && npm run seed-test && nyc --require @babel/register mocha ./apis/test/*.js --timeout 30000000  --exit",
     "generate-lcov": "nyc report --reporter=text-lcov > lcov.info",
     "coveralls-coverage": "coveralls < lcov.info",
     "codeclimate-coverage": "codeclimate-test-reporter < lcov.info",
@@ -31,17 +38,25 @@
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
     "@babel/register": "^7.0.0",
+    "bcrypt": "^3.0.4",
     "body-parser": "^1.18.3",
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
     "codeclimate-test-reporter": "^0.5.1",
     "coveralls": "^3.0.3",
+    "dotenv": "^6.2.0",
     "eslint": "^5.14.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.0",
     "mocha": "^6.0.1",
     "mocha-lcov-reporter": "^1.3.0",
-    "nyc": "^13.3.0"
+    "nyc": "^13.3.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "pg": "^7.8.1",
+    "sequelize": "^4.42.1",
+    "sequelize-cli": "^5.4.0"
   },
   "devDependencies": {
     "body-parser": "^1.18.3",
@@ -58,6 +73,8 @@
     "eslint": "^5.14.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "mocha-lcov-reporter": "^1.3.0",
-    "nyc": "^13.3.0"
+    "nyc": "^13.3.0",
+    "sequelize": "^4.42.1",
+    "sequelize-cli": "^5.4.0"
   }
 }
