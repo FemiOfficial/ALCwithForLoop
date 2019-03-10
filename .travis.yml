@@ -13,7 +13,7 @@ services:
 env: 
   global:
     - NODE_ENV=test
-    - JWT_SECRET=themealappkey
+    - SECRET_KEY = 'themealappkey'
     - CODECLIMATE_REPO_TOKEN=dd8ff66cb3c35a9f1a51cf5131b20d2ed38ca05dbc4ca0b0604cc70468c4be65
 before_script:
       - psql -c 'create database travis;' -U postgres
