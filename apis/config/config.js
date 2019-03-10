@@ -42,9 +42,9 @@ module.exports = {
     },
   },
   travis: {
-    username: 'postgres',
+    username: 'root',
     password: '',
-    database: 'travis',
+    database: 'mealApp',
     host: 'localhost',
     dialect: 'postgres',
     define: {
