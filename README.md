@@ -18,6 +18,7 @@
 * Nodejs - for the server side
 * Express - for the api routes
 * Heroku for hosting services
+* JWT for user authentication
 * PostgreSql - for the database
 * Babel - transpiling es6 codes to es5
 
