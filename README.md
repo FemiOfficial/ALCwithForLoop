@@ -6,6 +6,34 @@
 # ALCwithForLoop
 # Meal Booking REACT Application 
 ## UI link - https://femiofficial.github.io/ALCwithForLoop/frontend
+## REST API ON Heroku - https://bookingmealalc.herokuapp.com/api/v1/
+
+## Technologies used
+### UI
+* HTML - for the markup of the ui
+* CSS - for aethetics on the web pages
+* Javascript - to handle some extra ui/ux
+
+### Backend
+* Nodejs - for the server side
+* Express - for the api routes
+* Heroku for hosting services
+* PostgreSql - for the database
+* Babel for transpiling es6 codes to es5
+
+### Continous Integration
+* Travis CI for test automation
+* Coveralls to report the test coverage of the tests implemented o the routes
+
+## Installations
+* Install Nodejs and npm (a stable version)
+* Clone this repo *git clone https://github.com/FemiOfficial/ALCwithForLoop.git
+* Run *npm install* this will intsall all dependencies
+* Copy .env and edit the database credentials to match your database info.
+* Run *npm run migrate* to migrate all the models (db tables) to the database
+* Run *npm run seed* (the seed default database to corresponding models)
+* Run *npm run test* to test routes
+* Run *npm start* to start the app itself (you can test the routes with postman with this URL - https://bookingmealalc.herokuapp.com/api/v1/) 
 
 ## Completed all endpoints 
 
@@ -27,7 +55,7 @@ This is to delete a meal option with a valide id
 
 ## POST /apis/v1/menu
 
-This is to post a new menu option in this formal {meal_id: "1", quantity: "34"} //meal_id is the id of the meal to be added and quantity is number of plates or bowls to be added
+This is to post a new menu option in this formal {id: "1", quantity: "34"} //meal_id is the id of the meal to be added and quantity is number of plates or bowls to be added
 
 ## GET /apis/v1/menu
 
@@ -49,4 +77,4 @@ This is to get all the orders
 
 This is to edit an order with a valid id
 
-## Test cases completed to test all routes using Mocha and Chai
+## Test cases completed on all routes using Mocha and Chai
