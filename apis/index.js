@@ -4,6 +4,8 @@ const mealsRoute = require('./routes/mealsRoute');
 const menuRoute = require('./routes/menuRoute');
 const orderRoute = require('./routes/orderRoute');
 const userRoute = require('./routes/userRoute');
+const indexRoute = require('./routes/indexRoute');
+
 
 const app = express();
 
@@ -14,6 +16,7 @@ app.use(bodyParser.json());
 const PORT = 3000;
 
 // Routes
+app.use('/api/v1', indexRoute);
 app.use('/api/v1/meals', mealsRoute);
 app.use('/api/v1/menu', menuRoute);
 app.use('/api/v1/order', orderRoute);
