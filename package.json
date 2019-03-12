@@ -4,7 +4,7 @@
   "description": "meal booking app",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node ./apis/index.js",
+    "start": "npm run migrate-test_undo && npm run migrate && npm run seed && babel-node ./apis/index.js",
     "sequelize": "./node_modules/.bin/sequelize",
     "migrate": "npm run sequelize db:migrate",
     "migrate-test": "npm run sequelize db:migrate",
