@@ -37,6 +37,7 @@ module.exports = {
     database: process.env.DATABASE_NAME,
     host: process.env.POSTGRES_HOST,
     dialect: 'postgres',
+    key: process.env.DATABASE_URL,
     define: {
       timestamps: false,
     },
