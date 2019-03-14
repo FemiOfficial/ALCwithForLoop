@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 module.exports = {
+  secretOrKey: 'themealappkey',
   local: {
     username: process.env.DATABASE_USERNAME,
     password: process.env.DATABASE_PASSWORD,
