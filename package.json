@@ -54,6 +54,8 @@
     "nyc": "^13.3.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+    "@babel/plugin-transform-regenerator": "^7.3.4",
+    "@babel/plugin-transform-runtime": "^7.3.4",
     "pg": "^7.8.1",
     "sequelize": "^4.42.1",
     "sequelize-cli": "^5.4.0"
