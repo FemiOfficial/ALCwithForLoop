@@ -3,7 +3,7 @@ import hashPassword from '../utils/hash.password';
 import createToken from '../utils/createToken';
 import validPassword from '../utils/validPassword';
 
-const keys = require('../config/keys');
+const config = require('../config/config');
 
 const UserSerivces = {
   async createUser(user) {
@@ -33,7 +33,7 @@ const UserSerivces = {
         lastname: user.lastname,
         permission: user.permission,
       };
-      const authToken = `Bearer ${createToken.token(authUser, keys.secretOrKey)}`;
+      const authToken = `Bearer ${createToken.token(authUser, config.secretOrKey)}`;
       response = {
         msg: 'User logged in success',
         user,
