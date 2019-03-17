@@ -4,7 +4,7 @@
   "description": "meal booking app",
   "main": "index.js",
   "scripts": {
-    "start": "npm run migrate-test_undo && npm run migrate && npm run seed && babel-node ./apis/index.js",
+    "start": "babel-node ./apis/index.js",
     "sequelize": "./node_modules/.bin/sequelize",
     "migrate": "npm run sequelize db:migrate",
     "migrate-test": "npm run sequelize db:migrate",
@@ -36,6 +36,8 @@
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.3",
     "@babel/node": "^7.2.2",
+    "@babel/plugin-transform-regenerator": "^7.3.4",
+    "@babel/plugin-transform-runtime": "^7.3.4",
     "@babel/preset-env": "^7.3.1",
     "@babel/register": "^7.0.0",
     "bcrypt": "^3.0.4",
@@ -54,11 +56,11 @@
     "nyc": "^13.3.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
-    "@babel/plugin-transform-regenerator": "^7.3.4",
-    "@babel/plugin-transform-runtime": "^7.3.4",
     "pg": "^7.8.1",
     "sequelize": "^4.42.1",
-    "sequelize-cli": "^5.4.0"
+    "sequelize-cli": "^5.4.0",
+    "swagger-jsdoc": "^3.2.7",
+    "swagger-ui": "^3.21.0"
   },
   "devDependencies": {
     "body-parser": "^1.18.3",

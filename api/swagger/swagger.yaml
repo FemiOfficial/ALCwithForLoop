@@ -1,0 +1,26 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: Book A Meal API
+host: localhost:3000
+basePath: /
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /api/v1/meals:
+  get:
+    description: Returns all meal from the system that the catereer has access to
+    produces:
+    - application/json
+    responses:
+      '200':
+        description: A list of pets.
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/pet'
+
