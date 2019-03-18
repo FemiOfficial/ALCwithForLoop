@@ -34,12 +34,15 @@ const MealService = {
   },
 
   async getToDelete(id) {
-    const meal = await database.Meals.destroy({ where: { id } });
+    const meal = await database.Meal.destroy({ where: { id } });
     if (meal === 0) {
       const err = { error: 'an error occured' };
       throw err;
     }
-    return meal;
+    const response = {
+      message: 'meal deleted successfully',
+    };
+    return response;
   },
 
   async checkCaterer(id, catererId) {
