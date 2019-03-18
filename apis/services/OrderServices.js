@@ -9,10 +9,18 @@ const OrderService = {
       // eslint-disable-next-line no-param-reassign
       order.catererId = catererId;
 
+      meal.orderedTimes += 1;
       const orderedMeal = await database.Order.create(order);
+
+      const updateMeal = await database.Meal.update({ orderedTimes: meal.orderedTimes },
+        {
+          where:
+          { id: meal.id } });
+
       const response = {
         message: 'Meal Ordered Successfully',
         orderedMeal,
+        updateMeal,
       };
       return response;
     }
@@ -21,6 +29,7 @@ const OrderService = {
     };
     throw error;
   },
+
   async editOrder(id, userId, order) {
     try {
       const updatedOrder = await database.Order.update(order, { where: { id, userId } });

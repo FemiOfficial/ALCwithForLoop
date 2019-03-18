@@ -126,11 +126,12 @@ const MealController = {
           if (count > 0) {
             const deleteMeal = MealService.getToDelete(req.params.id);
             response = res.status(200).json({
+              message: 'meal deleted successfully',
               deleteMeal,
             });
           } else {
             response = res.status(404).json({
-              error: 'meal id is not available',
+              error: 'meal id is invalid',
             });
           }
         });
