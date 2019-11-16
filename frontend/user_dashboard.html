@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8 />
+    <title>Book A Meal</title>
+    <link rel="stylesheet" type="text/css" href="public/css/text_style.css">
+    <script src="public/js/main.js"></script>
+
+  </head>
+  <body class="vbox viewport">
+            <nav class="navbar navbar-expand-lg navbar-fixed navbar-light bg-light">
+                    <a class="navbar-brand " href="index.html"> <img src="public/img/pot.svg"/>   <strong>Book-A-Meal</strong> </a>
+                    <a class="btn-toggle" title="Side bar"  onclick="toggleSideBar()" id="menu-toggle" href="#"><img src="public/img/menu.png" alt=""></a>               
+            </nav>
+    <div id="wrapper">
+            <section class="main hbox space-between" >
+                    <nav id = "sidebar-wrapper">
+                          <ul class="sidebar-nav mt-1">
+                                  <li class="user-profile">
+                                     <img src="public/img/user.png" alt="user-avatar"/>
+                                     <p>John Doe</p>
+                                     <small>johndoe@gmail.com</small>
+                                  </li>
+                                  <li><a href="#"><i class="fas fa-clipboard-list"></i> Food Menu</a></li>
+                                  <li><a href="#"><i class="fas fa-history"></i> Order History</a></li>
+                                  <li><a href="#" id="feedback-info"><i class="far fa-comment-alt"></i> Feedback</a></li>
+                                  <li><a href="#"><i class="fas fa-cogs"></i>Settings</a></li>
+                           </ul>
+                    </nav>
+                    <div id = "page-content-wrapper">
+                          <h3>Food Menu</h3>
+                          <div  class="grid-container">
+                                   <div class="meal-modal-item">
+                                          <img src="public/img/swallow.jpg"/>
+                                          <h5>Pounded Yam and Egusi Soup</h5> 
+                                          <h6>Category: Swallows</h6> 
+                                          <h4><b class="meal-title">Price</b> :  &#x20A6; 3000 </h4>
+                                          <a href="#modal">
+                                                <div class="buttonOrder">
+                                                        <span>Order Now</span>
+                                                </div>
+                                          </a>
+                                  </div>
+                                  <div class="meal-modal-item">
+                                          <img src="public/img/swallow.jpg"/>
+                                          <h5>Pounded Yam and Egusi Soup</h5> 
+                                          <h6>Category: Swallows</h6> 
+                                          <h4><b class="meal-title">Price</b> :  &#x20A6; 3000 </h4>
+                                          <a href="#modal">
+                                                <div class="buttonOrder">
+                                                        <span>Order Now</span>
+                                                </div>
+                                          </a>
+                                  </div>
+                                  <div class="meal-modal-item">
+                                          <img src="public/img/swallow.jpg"/>
+                                          <h5>Pounded Yam and Egusi Soup</h5> 
+                                          <h6>Category: Swallows</h6> 
+                                          <h4><b class="meal-title">Price</b> :  &#x20A6; 3000 </h4>
+                                          <a href="#modal">
+                                                <div class="buttonOrder">
+                                                        <span>Order Now</span>
+                                                </div>
+                                          </a>
+                                  </div>
+                                  <div class="meal-modal-item">
+                                          <img src="public/img/swallow.jpg"/>
+                                          <h5>Pounded Yam and Egusi Soup</h5> 
+                                          <h6>Category: Swallows</h6> 
+                                          <h4><b class="meal-title">Price</b> :  &#x20A6; 3000 </h4>
+                                          
+                                          <a href="#modal">
+                                                <div class="buttonOrder">
+                                                        <span>Order Now</span>
+                                                </div>
+                                          </a>
+                                  </div>
+                                  <div class="meal-modal-item">
+                                          <img src="public/img/swallow.jpg"/>
+                                          <h5>Pounded Yam and Egusi Soup</h5> 
+                                          <h6>Category: Swallows</h6> 
+                                          <h4><b class="meal-title">Price</b> :  &#x20A6; 3000 </h4>
+                                          <a href="#modal">
+                                                <div class="buttonOrder">
+                                                        <span>Order Now</span>
+                                                </div>
+                                          </a>
+                                  </div>
+                                  <div class="meal-modal-item">
+                                          <img src="public/img/swallow.jpg"/>
+                                          <h5>Pounded Yam and Egusi Soup</h5> 
+                                          <h6>Category: Swallows</h6> 
+                                          <h4><b class="meal-title">Price</b> :  &#x20A6; 3000 </h4>
+                                            <a href="#modal">
+                                                    <div class="buttonOrder">
+                                                            <span>Order Now</span>
+                                                    </div>
+                                            </a>
+                                          <!-- <button class="orderBtn">Order Now</button> -->
+                                  </div>
+                          </div>
+                      
+                    </div>
+
+                    <div class="modal" id ="modal">
+                            <div class="modal-container">
+                                <div class="meal-img">                                  
+                                    <img src="public/img/swallow.jpg" alt="modal-image"><br> 
+                                </div>
+                                <div class="meal-details">
+                                    <a href="#modal-close">close</a>
+                                    <h3>Pounded Yam and Egusi Soup</h3>
+                                    <label>Number of Plates</label><br> <input type="number" placeholder="0"><br>
+                                    <a href="confirm_order.html">
+                                            <div class="buttonOrder">
+                                                    <span>Place Order</span>
+                                            </div>
+                                      </a>
+                                </div>
+   
+                            </div>
+                    </div>
+                   
+
+
+                  </section>
+                 
+    </div>
+   
+    
+   <script>
+     
+
+   </script>
+  </body>
+</html>
